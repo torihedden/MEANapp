@@ -18,7 +18,7 @@
     <div class="container">
 
       <div class="jumbotron text-center">
-          <h1>My Todo List <span class="label label-info">{{ todos.length }}</span></h1>
+          <h1>Iron Books<span class="label label-info">{{ todos.length }}</span></h1>
       </div>
 
       <div id="todo-list" class="row">
@@ -26,7 +26,8 @@
 
           <div class="checkbox" ng-repeat="todo in todos">
             <label>
-              <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+              <input type="checkbox" ng-click="deleteTodo(todo._id)">
+              <input type="text" value="{{ todo.text }}">
             </label>
           </div>
 

@@ -58,7 +58,4 @@ module.exports = function(app) {
         });
     });
 
-  //TODO: make an edit todos method
-  //make sure to pass in resquest for specific todo item (id), new text
-
 };
