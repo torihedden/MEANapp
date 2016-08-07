@@ -20,6 +20,16 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/api/todos/:todo_id', function(req, res) {
+      Todo.findById(req.params.todo_id, function(err, todo) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.json(todo);
+        }
+      });
+    });
+
     // create todo and send back all todos after creation
     app.post('/api/todos', function(req, res) {
 
@@ -56,6 +66,35 @@ module.exports = function(app) {
                 res.json(todos);
             });
         });
+    });
+
+    // alter the checked out status of a book
+    app.put('/api/todos', function(req, res) {
+      console.log('put method here');
+      console.log(req.body);
+      Todo.findById(req.body.id, function(err, todo) {
+        if (err) {
+          res.send(err);
+        }
+        todo.checkedOut = req.body.bookStatus;
+        todo.save(function(err) {
+          if (err) {
+            res.send(err);
+          }
+          res.json(todo);
+        });
+      });
+      // Todo.update({
+      //   _id : req.body.id,
+      //   checkedOut : req.body.bookStatus
+      // }, function(err, todo) {
+      //   console.log(todo);
+      //   console.log("line 78");
+      //   if (err)
+      //     res.send(err);
+      //   res.json(todo);
+      // });
+
     });
 
 };

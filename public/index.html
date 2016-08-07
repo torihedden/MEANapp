@@ -29,6 +29,8 @@
               <input type="checkbox" ng-click="deleteTodo(todo._id)">
               <input type="text" value="{{ todo.text }}">
             </label>
+            <button class="btn" ng-disabled="todo.checkedOut = false" ng-click="setBookStatus(todo._id, true)">Check Out</button>
+            <button class="btn" ng-disabled="todo.checkedOut = true" ng-click="setBookStatus(todo._id, false)">Check In</button>
           </div>
 
         </div>

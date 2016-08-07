@@ -43,4 +43,22 @@ angular.module('todoController', [])
               $scope.todos = data; // assign our new list of todos
           });
       };
+
+
+
+      $scope.setBookStatus = function(id, bookStatus) {
+        debugger;
+        var bookData = {
+          id : id,
+          bookStatus : bookStatus
+        }
+        Todos.update(bookData)
+          .success(function(data) {
+            // $scope.todos = data;
+            debugger;
+            console.log('retrieved book status');
+          })
+        console.log('check book out, set checkedOut to ' + bookStatus);
+      };
+
     });
