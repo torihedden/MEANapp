@@ -3,6 +3,7 @@
 // load mongoose since we need it to define a model
 var mongoose = require('mongoose');
 
+//here's where we construct what each book entry is going to look like.
 module.exports = mongoose.model('Todo', {
   text : String,
   checkedOut : Boolean

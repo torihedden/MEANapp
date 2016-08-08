@@ -1,0 +1,43 @@
+<div ng-controller="mainController">
+  <div class="container">
+
+    <div class="jumbotron text-center">
+        <h1>Iron Books
+          <!-- <span class="label label-info">{{ todos.length }}</span> -->
+        </h1>
+    </div>
+
+    <div id="todo-list" class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+
+        <div class="checkbox" ng-repeat="todo in todos">
+          <label>
+            <input type="checkbox" ng-click="deleteTodo(todo._id)">
+            <input type="text" value="{{ todo.text }}">
+          </label>
+          <!-- <span>{{ todo.checkedOut }}</span> -->
+          <a href="/details/{{ todo._id }}"><button class="btn">Details</a>
+          <button class="btn btn-primary" ng-disabled="todo.checkedOut == true" ng-click="setBookStatus(todo._id, true)">Check Out</button>
+          <button class="btn btn-info" ng-disabled="todo.checkedOut == false" ng-click="setBookStatus(todo._id, false)">Check In</button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div id="todo-form" class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-lg text-center" placeholder="Enter your todo" ng-model="formData.text">
+          </div>
+
+
+          <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -45,8 +45,6 @@ angular.module('todoController', [])
           });
       };
 
-
-
       $scope.setBookStatus = function(id, bookStatus) {
         debugger;
         var bookData = {
@@ -55,11 +53,19 @@ angular.module('todoController', [])
         }
         Todos.update(bookData)
           .success(function(data) {
-            // $scope.todos = data;
+
+          //
+            $($scope.todos).each(function(index) {
+              if ($scope.todos[index]._id === data._id) {
+                $scope.todos[index].checkedOut = data.checkedOut;
+              }
+            });
+
+
             debugger;
-            console.log('retrieved book status');
+            // console.log('retrieved book status');
           })
-        console.log('check book out, set checkedOut to ' + bookStatus);
+        // console.log('check book out, set checkedOut to ' + bookStatus);
       };
 
     });

@@ -70,8 +70,8 @@ module.exports = function(app) {
 
     // alter the checked out status of a book
     app.put('/api/todos', function(req, res) {
-      console.log('put method here');
-      console.log(req.body);
+      // console.log('put method here');
+      // console.log(req.body);
       Todo.findById(req.body.id, function(err, todo) {
         if (err) {
           res.send(err);
@@ -82,18 +82,9 @@ module.exports = function(app) {
             res.send(err);
           }
           res.json(todo);
+          console.log(res);
         });
       });
-      // Todo.update({
-      //   _id : req.body.id,
-      //   checkedOut : req.body.bookStatus
-      // }, function(err, todo) {
-      //   console.log(todo);
-      //   console.log("line 78");
-      //   if (err)
-      //     res.send(err);
-      //   res.json(todo);
-      // });
 
     });
 
