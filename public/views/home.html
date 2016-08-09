@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="jumbotron text-center">
-        <h1>Iron Books
+        <h1>New Book Entry
           <!-- <span class="label label-info">{{ todos.length }}</span> -->
         </h1>
     </div>
@@ -10,11 +10,12 @@
     <div id="todo-list" class="row">
       <div class="col-sm-4 col-sm-offset-4">
 
-        <div class="checkbox" ng-repeat="todo in todos">
-          <label>
-            <input type="checkbox" ng-click="deleteTodo(todo._id)">
-            <input type="text" value="{{ todo.text }}">
-          </label>
+        <div ng-repeat="todo in todos">
+
+          <button class="btn btn-danger" ng-click="deleteTodo(todo._id)">Delete</button>
+          <input type="text" value="{{ todo.text }}">
+          <input type="text" value="{{todo.author}}">
+
           <!-- <span>{{ todo.checkedOut }}</span> -->
           <a href="/details/{{ todo._id }}"><button class="btn">Details</a>
           <button class="btn btn-primary" ng-disabled="todo.checkedOut == true" ng-click="setBookStatus(todo._id, true)">Check Out</button>
@@ -29,7 +30,8 @@
       <div class="col-sm-8 col-sm-offset-2 text-center">
         <form>
           <div class="form-group">
-            <input type="text" class="form-control input-lg text-center" placeholder="Enter your todo" ng-model="formData.text">
+            <input type="text" class="form-control input-lg text-center" placeholder="Enter book title" ng-model="formData.text">
+            <input type="text" class="form-control input-lg text-center" placeholder="Enter author" ng-model="formData.author">
           </div>
 
 

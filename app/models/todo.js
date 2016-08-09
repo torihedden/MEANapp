@@ -6,5 +6,6 @@ var mongoose = require('mongoose');
 //here's where we construct what each book entry is going to look like.
 module.exports = mongoose.model('Todo', {
   text : String,
+  author : String,
   checkedOut : Boolean
 });

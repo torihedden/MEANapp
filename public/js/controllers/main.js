@@ -46,7 +46,7 @@ angular.module('todoController', [])
       };
 
       $scope.setBookStatus = function(id, bookStatus) {
-        debugger;
+        // debugger;
         var bookData = {
           id : id,
           bookStatus : bookStatus
@@ -62,7 +62,7 @@ angular.module('todoController', [])
             });
 
 
-            debugger;
+            // debugger;
             // console.log('retrieved book status');
           })
         // console.log('check book out, set checkedOut to ' + bookStatus);

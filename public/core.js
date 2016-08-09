@@ -1,7 +1,7 @@
 // js/core.js
 
 angular.module('bogoTodo', ['ngRoute', 'todoController', 'todoService'])
-  .config(function($routeProvider) {
+  .config(function($routeProvider, $locationProvider) {
     $routeProvider
 
     .when('/', {
@@ -11,6 +11,9 @@ angular.module('bogoTodo', ['ngRoute', 'todoController', 'todoService'])
     .when('/details/:_id', {
       templateUrl : 'views/details.html'
     })
+
+     // use the HTML5 History API
+    $locationProvider.html5Mode(true);
 
   });
 
