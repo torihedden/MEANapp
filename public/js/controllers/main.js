@@ -3,10 +3,11 @@
 //$scope is the application object (the owner of application variables and functions)
 //$http is an XMLHttpRequest object for requesting external data.
 
-angular.module('todoController', [])
+//modules are little packages or containers for related stuff
+angular.module('mainModule', [])
 
     // inject the Todo service factory into our controller
-    .controller('mainController', function($scope, $http, Todos) {
+    .controller('mainController', ['$scope', '$http', 'Todos', function($scope, $http, Todos) {
       $scope.formData = {};
 
       Todos.get()
@@ -68,4 +69,4 @@ angular.module('todoController', [])
         // console.log('check book out, set checkedOut to ' + bookStatus);
       };
 
-    });
+    }]);

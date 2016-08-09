@@ -1,11 +1,19 @@
 // js/core.js
 
-angular.module('bogoTodo', ['ngRoute', 'todoController', 'todoService'])
+angular.module('ironLibraryApp', ['ngRoute', 'mainModule', 'userModule', 'todoService', 'userService'])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
 
     .when('/', {
       templateUrl : 'views/home.html'
+    })
+
+    .when('/users', {
+      templateUrl : 'views/allUsers.html'
+    })
+
+    .when('/newBook', {
+      templateUrl : 'views/bookEntry.html'
     })
 
     .when('/details/:_id', {

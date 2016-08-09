@@ -2,6 +2,7 @@
 
 // load the todo model
 var Todo = require('./models/todo');
+var Users = require('./models/users');
 
 // expose the routes to our app with module.exports
 module.exports = function(app) {
@@ -18,6 +19,15 @@ module.exports = function(app) {
 
             res.json(todos); // return all todos in JSON format
         });
+    });
+
+    app.get('/api/users', function(req, res) {
+      Users.find(function(err, users) {
+        if (err)
+          res.send(err)
+
+        res.json(users);
+      });
     });
 
     app.get('/api/todos/:todo_id', function(req, res) {
