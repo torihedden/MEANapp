@@ -4,19 +4,34 @@
     <a href="/"><button class="btn btn-info">Home</button></a>
     <h2>List of Users</h2>
   </div>
-  {{message}}
-  {{users}}
-    <!-- <div ng-repeat="user in users">
-      <span>{{ user.firstName }}</span>
-      <span>{{ user.lastName }}</span>
-      <span>{{ user.slackName }}</span>
 
-    </div> -->
+    <div ng-repeat="user in users">
+      <div>
+        <span>User</span>
+        <span>{{ user.firstName }}</span>
+        <span>{{ user.lastName }}</span>
+        <span>{{ user.slackName }}</span>
+      </div>
+    </div>
     <form>
-      <input></input>
-      <input></input>
-      <input></input>
+      <div>
+        <label>First Name</label>
+        <input ng-model="formData.firstName"></input>
+      </div>
+
+      <div>
+        <label>Last Name</label>
+        <input ng-model="formData.lastName"></input>
+      </div>
+
+      <div>
+        <label>Slack Name</label>
+        <input ng-model="formData.slackName"></input>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg" ng-click="createNewUser()">Add User</button>
     </form>
 
   </div>
+
 </div>

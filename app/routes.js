@@ -21,15 +21,6 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/api/users', function(req, res) {
-      Users.find(function(err, users) {
-        if (err)
-          res.send(err)
-
-        res.json(users);
-      });
-    });
-
     app.get('/api/todos/:todo_id', function(req, res) {
       Todo.findById(req.params.todo_id, function(err, todo) {
         if (err) {
@@ -98,5 +89,35 @@ module.exports = function(app) {
       });
 
     });
+
+    // USERS ==================================
+
+    app.get('/api/users', function(req, res) {
+      Users.find(function(err, users) {
+        if (err)
+          res.send(err)
+
+        res.json(users);
+      });
+    });
+
+    app.post('/api/users', function(req, res) {
+      Users.create({
+        firstName : req.body.firstName,
+        lastName : req.body.lastName,
+        slackName : req.body.slackName
+      }, function(err, user) {
+        if (err)
+          res.send(err)
+
+        Users.find(function(err, users) {
+            if (err)
+                res.send(err)
+            res.json(users);
+        });
+
+    });
+
+  });
 
 };

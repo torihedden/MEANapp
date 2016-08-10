@@ -13,7 +13,7 @@ angular.module('userService', [])
         return $http.delete('/api/users/' + id);
       },
       update : function(userData) {
-        return $http.put('api/users', userData);
+        return $http.put('/api/users', userData);
       }
     }
   });
