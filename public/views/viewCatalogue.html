@@ -1,0 +1,29 @@
+<div class="container" ng-controller="mainController">
+  <div class="jumbotron">
+    <a href="/"><button class="btn btn-info">Home</button></a>
+    <h2>View Iron Library</h2>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="todo in todos">
+      <tr>
+        <td>{{todo.text}}</td>
+        <td>{{todo.author}}</td>
+        <td>avaiability here</td>
+        <td>
+          <button class="btn btn-primary" ng-if="todo.checkedOut !== true" ng-click="setBookStatus(todo._id, true)">Check Out</button>
+          <button class="btn btn-info" ng-if="todo.checkedOut !== false" ng-click="setBookStatus(todo._id, false)">Return Book</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>

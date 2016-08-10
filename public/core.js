@@ -16,6 +16,10 @@ angular.module('ironLibraryApp', ['ngRoute', 'mainModule', 'userModule', 'todoSe
       templateUrl : 'views/bookEntry.html'
     })
 
+    .when('/catalogue', {
+      templateUrl : 'views/viewCatalogue.html'
+    })
+
     .when('/details/:_id', {
       templateUrl : 'views/details.html'
     })
