@@ -1,7 +1,7 @@
 // app/routes.js
 
-// load the todo model
-var Todo = require('./models/todo');
+// load the Books and user models
+var Books = require('./models/todo');
 var Users = require('./models/users');
 
 // expose the routes to our app with module.exports
@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.get('/api/todos', function(req, res) {
 
         // use mongoose to get all todos in the database
-        Todo.find(function(err, todos) {
+        Books.find(function(err, todos) {
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err)
                 res.send(err)
@@ -22,7 +22,7 @@ module.exports = function(app) {
     });
 
     app.get('/api/todos/:todo_id', function(req, res) {
-      Todo.findById(req.params.todo_id, function(err, todo) {
+      Books.findById(req.params.todo_id, function(err, todo) {
         if (err) {
           res.send(err);
         } else {
@@ -35,7 +35,7 @@ module.exports = function(app) {
     app.post('/api/todos', function(req, res) {
 
         // create a todo, information comes from AJAX request from Angular
-        Todo.create({
+        Books.create({
             text : req.body.text,
             author : req.body.author,
             checkedOut : false
@@ -44,7 +44,7 @@ module.exports = function(app) {
                 res.send(err);
 
             // get and return all the todos after you create another
-            Todo.find(function(err, todos) {
+            Books.find(function(err, todos) {
                 if (err)
                     res.send(err)
                 res.json(todos);
@@ -55,14 +55,14 @@ module.exports = function(app) {
 
     // delete a todo
     app.delete('/api/todos/:todo_id', function(req, res) {
-        Todo.remove({
+        Books.remove({
             _id : req.params.todo_id
         }, function(err, todo) {
             if (err)
                 res.send(err);
 
             // get and return all the todos after you create another
-            Todo.find(function(err, todos) {
+            Books.find(function(err, todos) {
                 if (err)
                     res.send(err)
                 res.json(todos);
@@ -70,11 +70,11 @@ module.exports = function(app) {
         });
     });
 
-    // alter the checked out status of a book
+    // alter the checked out status of a Books
     app.put('/api/todos', function(req, res) {
       // console.log('put method here');
       // console.log(req.body);
-      Todo.findById(req.body.id, function(err, todo) {
+      Books.findById(req.body.id, function(err, todo) {
         if (err) {
           res.send(err);
         }

@@ -1,0 +1,29 @@
+<div ng-controller="mainController">
+  <div class="container">
+    <div class="jumbotron">
+      <a href="/"><button class="btn btn-info">Home</button></a>
+      <h2>Check a Book Back In</h2>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="book in books">
+        <tr ng-if="book.checkedOut == true">
+          <td>{{book.text}}</td>
+          <td>{{book.author}}</td>
+          <td>
+            <button class="btn btn-info" ng-click="setBookStatus(book._id, false)">Return Book</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>

@@ -7,10 +7,10 @@
 angular.module('mainModule', [])
 
     // inject the Todo service factory into our controller
-    .controller('mainController', ['$scope', '$http', 'Todos', function($scope, $http, Todos) {
+    .controller('mainController', ['$scope', '$http', 'Books', function($scope, $http, Books) {
       $scope.formData = {};
 
-      Todos.get()
+      Books.get()
         .success(function(data) {
           $scope.books = data;
           console.log(data);
@@ -26,7 +26,7 @@ angular.module('mainModule', [])
         if (!$.isEmptyObject($scope.formData)) {
 
           // call the create function from our service (returns a promise object)
-          Todos.create($scope.formData)
+          Books.create($scope.formData)
 
             // if successful creation, call our get function to get all the new books
             .success(function(data) {
@@ -38,7 +38,7 @@ angular.module('mainModule', [])
 
       // DELETE ==================================================================
       $scope.deleteBook = function(id) {
-        Todos.delete(id)
+        Books.delete(id)
             // if successful creation, call our get function to get all the new books
           .success(function(data) {
               $scope.books = data; // assign our new list of books
@@ -51,7 +51,7 @@ angular.module('mainModule', [])
           id : id,
           bookStatus : bookStatus
         }
-        Todos.update(bookData)
+        Books.update(bookData)
           .success(function(data) {
 
           //
