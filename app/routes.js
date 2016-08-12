@@ -115,9 +115,28 @@ module.exports = function(app) {
                 res.send(err)
             res.json(users);
         });
+    });
+  });
 
+  /*
+  app.put('/api/todos', function(req, res) {
+    // console.log('put method here');
+    // console.log(req.body);
+    Books.findById(req.body.id, function(err, todo) {
+      if (err) {
+        res.send(err);
+      }
+      todo.checkedOut = req.body.bookStatus;
+      todo.save(function(err) {
+        if (err) {
+          res.send(err);
+        }
+        res.json(todo);
+        console.log(res);
+      });
     });
 
   });
+  */
 
 };

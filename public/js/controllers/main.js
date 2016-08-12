@@ -46,7 +46,7 @@ angular.module('mainModule', [])
       };
 
       $scope.setBookStatus = function(id, bookStatus) {
-        // debugger;
+        console.log(id);
         var bookData = {
           id : id,
           bookStatus : bookStatus
@@ -54,18 +54,14 @@ angular.module('mainModule', [])
         Books.update(bookData)
           .success(function(data) {
 
-          //
             $($scope.books).each(function(index) {
               if ($scope.books[index]._id === data._id) {
                 $scope.books[index].checkedOut = data.checkedOut;
               }
             });
-
-
-            // debugger;
-            // console.log('retrieved book status');
           })
-        // console.log('check book out, set checkedOut to ' + bookStatus);
       };
+
+      //TODO: combine setBookStatus and assignBookToUser (pushes book to array of checked out books associated with user)
 
     }]);
