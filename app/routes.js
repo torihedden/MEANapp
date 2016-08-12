@@ -1,7 +1,7 @@
 // app/routes.js
 
 // load the Books and user models
-var Books = require('./models/todo');
+var Books = require('./models/book');
 var Users = require('./models/users');
 
 // expose the routes to our app with module.exports
@@ -10,13 +10,16 @@ module.exports = function(app) {
     // api ---------------------------------------------------------------------
     // get all todos
     app.get('/api/todos', function(req, res) {
-
+      console.log("get todos");
         // use mongoose to get all todos in the database
         Books.find(function(err, todos) {
+          console.log('book find here');
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err)
+            if (err) {
+              console.log('error!');
                 res.send(err)
-
+            }
+            console.log("no error, returned books", todos);
             res.json(todos); // return all todos in JSON format
         });
     });
@@ -33,13 +36,13 @@ module.exports = function(app) {
 
     // create todo and send back all todos after creation
     app.post('/api/todos', function(req, res) {
-
         // create a todo, information comes from AJAX request from Angular
         Books.create({
             text : req.body.text,
             author : req.body.author,
             checkedOut : false
         }, function(err, todo) {
+            console.log('asdf');
             if (err)
                 res.send(err);
 
