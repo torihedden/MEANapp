@@ -1,11 +1,34 @@
-<div class="container">
-  <div class="jumbotron"><h2>Iron Books Home</h2></div>
-  <h3>Admin Tools</h3>
-  <a href="/newBook"><button class="btn btn-info">New Book Entry</button></a>
-  <a href="/users"><button class="btn btn-primary">Create User</button></a>
-  <br>
-  <br>
-  <h3>User View</h3>
-  <a href="/catalogue"><button class="btn btn-primary">View Available Books</button></a>
-  <a href="/return"><button class="btn btn-info">Return Book</button></a>
+<div ng-controller="UserController">
+  <div class="container">
+    <div class="jumbotron"><h2>Iron Books Home</h2></div>
+
+
+    <h3>User View</h3>
+    <label>Select Slack Name</label>
+    <div>
+      <select ng-model="selectSlackName">
+        <option ng-repeat="user in users" value="{{user.slackName}}">{{user.slackName}}</option>
+      </select>
+    </div>
+
+    <br>
+
+    <div ng-show="selectSlackName !== ''">
+      <a href="/catalogue"><button class="btn btn-primary">View Available Books</button></a>
+      <a href="/return"><button class="btn btn-info">Return Book</button></a>
+    </div>
+
+    <!-- <div>
+      <input placeholder="Find your Slack name"></input>
+    </div> -->
+    <br>
+    <br>
+
+    <h3>Admin Tools</h3>
+    <a href="/admin"><button class="btn btn-info">Admin Tools</button></a>
+
+    <br>
+    <br>
+
+  </div>
 </div>

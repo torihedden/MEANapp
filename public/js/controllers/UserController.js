@@ -1,6 +1,7 @@
 angular.module('userModule', [])
   .controller('UserController', ['$scope', '$http', 'Users', function($scope, $http, Users) {
-    $scope.message = "hi there";
+
+    $scope.selectSlackName = '';
 
     $scope.formData = {};
 
