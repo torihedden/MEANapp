@@ -14,7 +14,7 @@ angular.module('mainModule', [])
         .success(function(data) {
           debugger;
           $scope.books = data;
-          console.log(data);
+          // console.log(data);
         });
 
       // CREATE ==================================================================
@@ -52,6 +52,7 @@ angular.module('mainModule', [])
           id : id,
           bookStatus : bookStatus
         }
+        debugger;
         Books.update(bookData)
           .success(function(data) {
             // $http({

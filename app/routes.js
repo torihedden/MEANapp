@@ -80,8 +80,8 @@ module.exports = function(app) {
 
     // alter the checked out status of a Books
     app.put('/api/todos', function(req, res) {
-      // console.log('put method here');
-      // console.log(req.body);
+      console.log('put method here');
+      console.log(req);
       Books.findById(req.body.id, function(err, todo) {
         if (err) {
           res.send(err);
