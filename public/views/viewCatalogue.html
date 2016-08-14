@@ -16,7 +16,6 @@
       <tr ng-if="book.checkedOut == false">
         <td>{{book.text}}</td>
         <td>{{book.author}}</td>
-        <td>avaiability here</td>
         <td>
           <button class="btn btn-primary" ng-if="book.checkedOut !== true" ng-click="setBookStatus(book._id, true)">Check Out</button>
           <!-- <button class="btn btn-info" ng-if="book.checkedOut !== false" ng-click="setBookStatus(book._id, false)">Return Book</button> -->
