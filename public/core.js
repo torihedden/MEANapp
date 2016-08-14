@@ -1,6 +1,6 @@
 // js/core.js
 
-angular.module('ironLibraryApp', ['ngRoute', 'mainModule', 'userModule', 'todoService', 'userService'])
+angular.module('ironLibraryApp', ['ngRoute', 'mainModule', 'userModule', 'todoService', 'userService', 'userSelectService'])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
 

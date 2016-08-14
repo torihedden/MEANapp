@@ -8,7 +8,7 @@ angular.module('userModule', [])
     Users.get()
       .success(function(data) {
         $scope.users = data;
-        console.log(data);
+        // console.log(data);
       });
 
       $scope.createNewUser = function() {

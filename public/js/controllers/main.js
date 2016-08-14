@@ -7,7 +7,7 @@
 angular.module('mainModule', [])
 
     // inject the Todo service factory into our controller
-    .controller('mainController', ['$scope', '$http', 'Books', function($scope, $http, Books) {
+    .controller('mainController', ['$scope', '$http', 'Books', 'userSelect', function($scope, $http, Books, userSelect) {
       $scope.formData = {};
 
       Books.get()
