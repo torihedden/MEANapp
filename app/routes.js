@@ -3,23 +3,29 @@
 // load the Books and user models
 var Books = require('./models/book');
 var Users = require('./models/users');
+var request = require('request');
 
 // expose the routes to our app with module.exports
 module.exports = function(app) {
 
+    //Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.
+    //from http://stackoverflow.com/questions/19867775/cors-trouble-with-nodejs-and-angularjs
+    // app.all('/*', function(req, res, next) {
+    //   res.header("Access-Control-Allow-Origin", "*");
+    //   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    //   res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+    //   next();
+    // })
+
     // api ---------------------------------------------------------------------
     // get all todos
     app.get('/api/todos', function(req, res) {
-      console.log("get todos");
         // use mongoose to get all todos in the database
         Books.find(function(err, todos) {
-          console.log('book find here');
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err) {
-              console.log('error!');
-                res.send(err)
+              res.send(err);
             }
-            console.log("no error, returned books", todos);
             res.json(todos); // return all todos in JSON format
         });
     });
@@ -42,14 +48,13 @@ module.exports = function(app) {
             author : req.body.author,
             checkedOut : false
         }, function(err, todo) {
-            console.log('asdf');
             if (err)
                 res.send(err);
 
             // get and return all the todos after you create another
             Books.find(function(err, todos) {
                 if (err)
-                    res.send(err)
+                    res.send(err);
                 res.json(todos);
             });
         });
@@ -67,7 +72,7 @@ module.exports = function(app) {
             // get and return all the todos after you create another
             Books.find(function(err, todos) {
                 if (err)
-                    res.send(err)
+                    res.send(err);
                 res.json(todos);
             });
         });
@@ -85,9 +90,30 @@ module.exports = function(app) {
         todo.save(function(err) {
           if (err) {
             res.send(err);
+          } else {
+            var responseText = '';
+            if (todo.checkedOut == true) {
+              responseText = "You checked out \"" + todo.text + "\". Enjoy!";
+            } else {
+              responseText = "You returned \"" + todo.text + "\". Thank you!";
+            }
+            request({
+              method: 'POST',
+              headers: [{
+                name: 'content-type',
+                value: 'application/json'
+              }],
+              uri: 'https://hooks.slack.com/services/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',
+              body: JSON.stringify({
+                "text": responseText
+              })
+            }, function (error, response, body) {
+              // if (!error && response.statusCode == 200) {
+              //
+              // }
+            });
+            res.json(todo);
           }
-          res.json(todo);
-          console.log(res);
         });
       });
 
@@ -98,7 +124,7 @@ module.exports = function(app) {
     app.get('/api/users', function(req, res) {
       Users.find(function(err, users) {
         if (err)
-          res.send(err)
+          res.send(err);
 
         res.json(users);
       });

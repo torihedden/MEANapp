@@ -12,6 +12,7 @@ angular.module('mainModule', [])
 
       Books.get()
         .success(function(data) {
+          debugger;
           $scope.books = data;
           console.log(data);
         });
@@ -53,6 +54,15 @@ angular.module('mainModule', [])
         }
         Books.update(bookData)
           .success(function(data) {
+            // $http({
+            //     url: 'https://hooks.slack.com/services/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',
+            //     method: "POST",
+            //     data: 'payload=' + JSON.stringify({"text": "tori's test"})
+            // })
+            // .then(function(response) {
+            //     console.log(response)
+            // });
+
 
             $($scope.books).each(function(index) {
               if ($scope.books[index]._id === data._id) {
