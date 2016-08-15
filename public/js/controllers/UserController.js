@@ -1,7 +1,11 @@
 angular.module('userModule', [])
-  .controller('UserController', ['$scope', '$http', 'Users', function($scope, $http, Users) {
+  .controller('UserController', ['$scope', '$http', 'Users', 'userSelect', function($scope, $http, Users, userSelect) {
 
-    $scope.selectSlackName = '';
+    $scope.selectedUser;
+
+    $scope.setUser = function(user) {
+      userSelect.setCurrentUser(user);
+    }
 
     $scope.formData = {};
 

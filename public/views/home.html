@@ -6,14 +6,14 @@
     <h3>User View</h3>
     <label>Select Slack Name</label>
     <div>
-      <select ng-model="selectSlackName">
+      <select ng-model="selectedUser" ng-change="setUser(selectedUser)">
         <option ng-repeat="user in users" value="{{user.slackName}}">{{user.slackName}}</option>
       </select>
     </div>
 
     <br>
 
-    <div ng-show="selectSlackName !== ''">
+    <div ng-show="selectedUser">
       <a href="/catalogue"><button class="btn btn-primary">View Available Books</button></a>
       <a href="/return"><button class="btn btn-info">Return Book</button></a>
     </div>

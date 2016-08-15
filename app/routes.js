@@ -20,12 +20,15 @@ module.exports = function(app) {
     // api ---------------------------------------------------------------------
     // get all todos
     app.get('/api/todos', function(req, res) {
+      console.log('books here');
         // use mongoose to get all todos in the database
         Books.find(function(err, todos) {
+          console.log('book fxn here');
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err) {
               res.send(err);
             }
+            console.log('got books good');
             res.json(todos); // return all todos in JSON format
         });
     });
@@ -123,9 +126,10 @@ module.exports = function(app) {
 
     app.get('/api/users', function(req, res) {
       Users.find(function(err, users) {
+        console.log('get users');
         if (err)
           res.send(err);
-
+        console.log('no error users');
         res.json(users);
       });
     });

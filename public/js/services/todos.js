@@ -6,6 +6,7 @@ angular.module('todoService', [])
   .factory('Books', function($http) {
     return {
       get : function() {
+        console.log('get books from todo services');
         return $http.get('/api/todos');
       },
       create : function(todoData) {
