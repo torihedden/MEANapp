@@ -2,14 +2,18 @@
   <div class="container">
     <div class="jumbotron"><h2>Iron Books Home</h2></div>
 
+    <h2>Welcome</h2>
+    <p>
+      Please <a href="/register">register</a> if you are new, or <a href="/signIn">sign in</a> if you are returning.
+    </p>
 
-    <h3>User View</h3>
+    <!-- <h3>User View</h3>
     <label>Select Slack Name</label>
     <div>
       <select ng-model="selectedUser" ng-change="setUser(selectedUser)">
         <option ng-repeat="user in users" value="{{user.slackName}}">{{user.slackName}}</option>
       </select>
-    </div>
+    </div> -->
 
     <br>
 
@@ -32,3 +36,9 @@
 
   </div>
 </div>
+
+<style media="screen">
+  .jumbotron {
+    background-color: #ade3d1;
+  }
+</style>

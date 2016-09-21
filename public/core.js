@@ -28,6 +28,13 @@ angular.module('ironLibraryApp', ['ngRoute', 'mainModule', 'userModule', 'todoSe
       templateUrl : 'views/admin.html'
     })
 
+    .when('/register', {
+      templateUrl : 'views/register.html'
+    })
+
+    .when('/signIn', {
+      templateUrl : 'views/signIn.html'
+    })
 
     // .when('/details/:_id', {
     //   templateUrl : 'views/details.html'
